@@ -1,8 +1,8 @@
 ## Archiving the Artifacts
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "../lambdaValidarUsuario/publish/"
-  output_path = "./lambda.zip"
+  source_dir  = "lambdaValidarUsuario/publish/"
+  output_path = "lambda.zip"
   depends_on  = [null_resource.build_dotnet_lambda]
 }
 
