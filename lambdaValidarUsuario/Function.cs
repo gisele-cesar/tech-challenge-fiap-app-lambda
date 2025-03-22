@@ -25,7 +25,7 @@ namespace lambdaValidarUsuario
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
-            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var serviceProvider = serviceCollection.BuildServiceProvider();cd\
 
             var validarUsuario = serviceProvider.GetService<ValidarUsuarioService>();
 
