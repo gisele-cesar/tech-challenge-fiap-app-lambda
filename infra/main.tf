@@ -40,17 +40,17 @@ resource "aws_iam_role_policy_attachment" "lambdabasic" {
   policy_arn = data.aws_iam_policy.lambdabasic.arn
 }
 
-resource "aws_apigatewayv2_api" "lambda" {
-  name          = "dotnet-lambda-annotations"
-  protocol_type = "HTTP"
-}
+# resource "aws_apigatewayv2_api" "lambda" {
+#   name          = "dotnet-lambda-annotations"
+#   protocol_type = "HTTP"
+# }
 
-resource "aws_apigatewayv2_stage" "lambda" {
-  api_id = aws_apigatewayv2_api.lambda.id
+# resource "aws_apigatewayv2_stage" "lambda" {
+#   api_id = aws_apigatewayv2_api.lambda.id
 
-  name        = "dotnet-lambda-annotations"
-  auto_deploy = true
-}
+#   name        = "dotnet-lambda-annotations"
+#   auto_deploy = true
+# }
 
 # resource "aws_apigatewayv2_integration" "dotnet" {
 #   api_id = aws_apigatewayv2_api.lambda.id
