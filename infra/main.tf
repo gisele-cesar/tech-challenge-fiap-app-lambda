@@ -1,3 +1,8 @@
+variable "component_name" {
+  description = "Name of the component"
+  type        = string
+}
+
 resource "aws_lambda_function" "lambda" {
   filename         = "../package.zip"
   function_name    = "lambda.ValidarUsuario"
@@ -10,8 +15,7 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      VAR1 = "VAR1",
-      VAR2 = "VAR2"
+      component_name = "lambda-validar-usuario"
     }
   }
 }
