@@ -3,7 +3,7 @@ resource "aws_lambda_function" "lambda" {
   function_name    = "lambdaValidarUsuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
-  runtime          = "dotnet8.0"
+  runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
   timeout          = 10
