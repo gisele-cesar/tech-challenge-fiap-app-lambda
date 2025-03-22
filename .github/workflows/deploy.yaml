@@ -43,7 +43,7 @@ jobs:
           dotnet-version: '8.0.x'
       
       - name: Build solution
-        run: dotnet build -c Debug lambda/lambda.ValidarUsuario.sln
+        run: dotnet build -c Debug lambda/lambdaValidarUsuario.sln
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
