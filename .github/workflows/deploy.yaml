@@ -1,7 +1,8 @@
 on:
   push:
     branches:
-      - [feature/criacao-estrutura]
+      - feature/criacao-estrutura
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -43,7 +44,9 @@ jobs:
       
       - name: Build solution
         run: dotnet build -c Debug
-      - uses: aws-actions/configure-aws-credentials@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
