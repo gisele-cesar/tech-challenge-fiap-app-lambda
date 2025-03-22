@@ -2,7 +2,7 @@ using Xunit;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 
-namespace lambda.ValidarUsuario.Tests;
+namespace lambdaValidarUsuario.Tests;
 
 public class FunctionTest
 {

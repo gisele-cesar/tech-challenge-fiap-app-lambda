@@ -1,4 +1,4 @@
-﻿namespace lambda.ValidarUsuario.Interfaces
+﻿namespace lambdaValidarUsuario.Interfaces
 {
     public interface IValidarUsuarioService
     {

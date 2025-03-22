@@ -12,6 +12,6 @@
   "function-runtime": "dotnet8",
   "function-memory-size": 512,
   "function-timeout": 30,
-  "function-handler": "lambda.ValidarUsuario::lambda.ValidarUsuario.LambdaHandler::handleRequest"
+  "function-handler": "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest"
   /// LambdaTest::LambdaTest.LambdaHandler::handleRequest
 }

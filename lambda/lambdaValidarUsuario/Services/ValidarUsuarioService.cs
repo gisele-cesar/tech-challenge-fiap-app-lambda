@@ -1,6 +1,6 @@
-﻿using lambda.ValidarUsuario.Interfaces;
+﻿using lambdaValidarUsuario.Interfaces;
 
-namespace lambda.ValidarUsuario.Services
+namespace lambdaValidarUsuario.Services
 {
     public class ValidarUsuarioService : IValidarUsuarioService
     {

@@ -13,6 +13,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lambda.ValidarUsuario\lambda.ValidarUsuario.csproj" />
+    <ProjectReference Include="..\lambda.ValidarUsuario\lambdaValidarUsuario.csproj" />
   </ItemGroup>
 </Project>

@@ -2,8 +2,8 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using lambda.ValidarUsuario.Interfaces;
-using lambda.ValidarUsuario.Services;
+using lambdaValidarUsuario.Interfaces;
+using lambdaValidarUsuario.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System;
@@ -12,7 +12,7 @@ using System.Reflection;
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace lambda.ValidarUsuario
+namespace lambdaValidarUsuario
 {
     public class LambdaHandler
     {

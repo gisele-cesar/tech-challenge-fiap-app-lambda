@@ -1,4 +1,4 @@
-﻿namespace lambda.ValidarUsuario
+﻿namespace lambdaValidarUsuario
 {
     public interface IEntidadeTesteService
     {
