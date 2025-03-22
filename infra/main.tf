@@ -1,8 +1,3 @@
-variable "component_name" {
-  description = "Name of the component"
-  type        = string
-}
-
 resource "aws_lambda_function" "lambda" {
   filename         = "../package.zip"
   function_name    = "lambda.ValidarUsuario"
@@ -12,16 +7,10 @@ resource "aws_lambda_function" "lambda" {
   architectures    = ["x86_64"]
   memory_size      = "512"
   timeout          = 10
-
-  environment {
-    variables = {
-      component_name = "lambda-validar-usuario"
-    }
-  }
 }
 
 resource "aws_iam_role" "lambda" {
-  name                = "${var.component_name}-${data.aws_region.current.name}"
+  name                = "lambda-validar-usuario-role"
   assume_role_policy  = data.aws_iam_policy_document.assume_role_policy.json
 }
 
