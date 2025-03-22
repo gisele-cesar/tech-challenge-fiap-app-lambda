@@ -1,13 +1,13 @@
 ## Archiving the Artifacts
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "../lambdaValidarUsuario/publish/"
-  output_path = "./lambdaValidarUsuario.zip"
+  source_dir  = "../lambda/publish/"
+  output_path = "./lambda.zip"
   depends_on  = [null_resource.build_dotnet_lambda]
 }
 
 resource "aws_lambda_function" "lambda" {
-  filename         = "lambdaValidarUsuario.zip"
+  filename         = "lambda.zip"
   function_name    = "lambdaValidarUsuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
