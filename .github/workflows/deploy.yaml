@@ -45,8 +45,8 @@ jobs:
       - name: AWS CLI
         run: dotnet tool install -g Amazon.Lambda.Tools
 
-      # - name: Restore dependencies
-      #   run: dotnet restore lambdaValidarUsuario.sln
+      - name: Restore dependencies
+        run: dotnet restore lambdaValidarUsuario.sln
 
       # - name: Build
       #   run: dotnet build --no-restore lambdaValidarUsuario.sln
