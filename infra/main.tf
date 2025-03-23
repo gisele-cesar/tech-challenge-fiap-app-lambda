@@ -12,7 +12,7 @@ resource "aws_lambda_function" "lambda" {
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
   source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
-  runtime          = "dotnet6"
+  runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
   timeout          = 10
