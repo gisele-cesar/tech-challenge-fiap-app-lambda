@@ -49,7 +49,7 @@ jobs:
         run: dotnet restore lambdaValidarUsuario.sln
 
       - name: Restore project
-        run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild
+        run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild 
 
       - name: Build Projeto
         run: dotnet publish "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -c Release -o "/home/runner/work/_temp"
