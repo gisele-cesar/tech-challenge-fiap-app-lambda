@@ -52,7 +52,7 @@ jobs:
         run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild
 
       - name: Build Projeto
-        run: dotnet publish "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -c release -o ./publish 
+        run: dotnet publish "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -c release -o -t:rebuild ./publish 
 
       # - name: Deploy to Lambda
       #   run: dotnet lambda deploy-serverless
