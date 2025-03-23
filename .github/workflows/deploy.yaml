@@ -43,7 +43,7 @@ jobs:
           dotnet-version: '8.0.x'
       
       - name: Build solution
-        run: dotnet build -c Debug ./lambdaValidarUsuario/lambdaValidarUsuario.csproj
+        run: dotnet build -c Release ./lambdaValidarUsuario/lambdaValidarUsuario.csproj
 
       - name: Build application
         run: dotnet publish -c Release -o ./publish
