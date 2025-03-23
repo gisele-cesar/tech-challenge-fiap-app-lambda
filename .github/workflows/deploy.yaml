@@ -48,8 +48,8 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore lambdaValidarUsuario.sln
 
-      - name: Build
-        run: dotnet restore "/../lambdaValidarUsuario.csproj"
+      - name: Restore project
+        run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild
 
       - name: Build Projeto
         run: dotnet publish "lambdaValidarUsuario.csproj" -c release -o /publish 
