@@ -1,24 +1,23 @@
-# ## Archiving the Artifacts
-# data "archive_file" "lambda" {
-#   type        = "zip"
-#   source_dir  = "../lambdaValidarUsuario/publish/"
-#   output_path = "lambda.zip"
-#   depends_on  = [null_resource.build_dotnet_lambda]
-# }
+## Archiving the Artifacts
+data "archive_file" "lambda" {
+  type        = "zip"
+  #source_dir  = "../lambdaValidarUsuario/publish/"
+  source_dir  = "../"
+  output_path = "lambda.zip"
+  depends_on  = [null_resource.build_dotnet_lambda]
+}
 
 resource "aws_lambda_function" "lambda" {
-  # filename         = "lambda.zip"
+  filename         = "lambda.zip"
   function_name    = "lambdaValidarUsuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
-  source_code_hash = filebase64sha256("./lambda.zip") # ?
+  #source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
   runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
   timeout          = 10
-   provisioner "local-exec" {
-    command = "aws lambda update-function-code --function-name lambdaValidarUsuario --zip-file fileb:./lambda.zip"
-  }
+  depends_on       = [data.archive_file.lambda]
 }
 
 resource "aws_iam_role" "lambda" {
