@@ -52,7 +52,7 @@ jobs:
         run: dotnet build --no-restore lambdaValidarUsuario.sln
 
       - name: Build Projeto
-        run: dotnet build --no-restore ./../lambdaValidarUsuario.csproj
+        run: dotnet build --no-restore /../lambdaValidarUsuario/lambdaValidarUsuario.csproj
 
       # - name: Deploy to Lambda
       #   run: dotnet lambda deploy-serverless
