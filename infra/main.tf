@@ -4,7 +4,7 @@ data "archive_file" "lambda" {
   #source_dir  = "../lambdaValidarUsuario/publish/"
   #source_dir  = "${path.module}/lambdaValidarUsuario/"
   source_dir  = "/home/runner/work/_temp"
-  output_path = "lambda.zip"
+  output_path = "/home/runner/work/_temp"
   depends_on  = [null_resource.build_dotnet_lambda]
 }
 
