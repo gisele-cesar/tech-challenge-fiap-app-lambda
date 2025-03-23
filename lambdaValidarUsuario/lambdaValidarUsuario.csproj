@@ -9,6 +9,7 @@
     <PublishReadyToRun>true</PublishReadyToRun>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <IsTestProject>false</IsTestProject>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.7.1" />
