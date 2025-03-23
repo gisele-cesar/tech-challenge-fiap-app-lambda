@@ -42,11 +42,17 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       
-      - name: Build solution
-        run: dotnet build -c Release ./lambdaValidarUsuario/lambdaValidarUsuario.csproj
+      - name: AWS CLI
+        run: dotnet tool install -g Amazon.Lambda.Tools
 
-      - name: Build application
-        run: dotnet publish -c Release -o ./publish
+      - name: Restore dependencies
+        run: dotnet restore lambdaValidarUsuario.sln
+
+      - name: Build
+        run: dotnet build --no-restore lambdaValidarUsuario.sln
+
+      - name: Deploy to Lambda
+        run: dotnet lambda deploy-serverless
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
