@@ -48,21 +48,9 @@ jobs:
       - name: Build application
         run: dotnet publish -c Release -o ./publish
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: dotnet-lambda-package
-          path: ./publish
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
-      - name: Deploy to AWS Lambda
-        run: |
-          aws lambda update-function-code \
-            --function-name lambdaValidarUsuario \
-            --zip-file fileb://publish.zip
