@@ -10,6 +10,7 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <IsTestProject>false</IsTestProject>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="aws-lambda-tools-defaults.json" />
