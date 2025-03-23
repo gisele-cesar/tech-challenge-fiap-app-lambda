@@ -49,7 +49,7 @@ jobs:
         run: dotnet restore lambdaValidarUsuario.sln
 
       - name: Build
-        run: dotnet build --no-restore lambdaValidarUsuario.sln
+        run: dotnet restore "lambdaValidarUsuario.csproj"
 
       - name: Build Projeto
         run: dotnet publish "lambdaValidarUsuario.csproj" -c release -o /publish 
