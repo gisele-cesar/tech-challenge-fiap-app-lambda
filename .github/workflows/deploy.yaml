@@ -25,11 +25,11 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        working-directory: infra
+       # working-directory: infra
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
-        working-directory: infra
+       # working-directory: infra
 
   build-deploy:
     runs-on: ubuntu-latest
@@ -48,8 +48,8 @@ jobs:
       # - name: Restore dependencies
       #   run: dotnet restore lambdaValidarUsuario.sln
 
-      - name: Build
-        run: dotnet build --no-restore lambdaValidarUsuario.sln
+      # - name: Build
+      #   run: dotnet build --no-restore lambdaValidarUsuario.sln
 
       # - name: Deploy to Lambda
       #   run: dotnet lambda deploy-serverless
