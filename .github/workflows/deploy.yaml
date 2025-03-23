@@ -48,8 +48,8 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore lambdaValidarUsuario.sln
 
-      # - name: Build
-      #   run: dotnet build --no-restore lambdaValidarUsuario.sln
+      - name: Build
+        run: dotnet build --no-restore lambdaValidarUsuario.sln
 
       # - name: Deploy to Lambda
       #   run: dotnet lambda deploy-serverless
