@@ -8,17 +8,17 @@ data "archive_file" "lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
+  depends_on       = [data.archive_file.lambda]
   filename         = "lambda.zip"
   function_name    = "lambdaValidarUsuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
-  #source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
-  source_code_hash = filebase64sha256("./lambda.zip")
+  source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
+  #source_code_hash = filebase64sha256("./lambda.zip")
   runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
   timeout          = 10
-  depends_on       = [data.archive_file.lambda]
 }
 
 resource "aws_iam_role" "lambda" {
