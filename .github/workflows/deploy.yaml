@@ -42,17 +42,17 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       
-      - name: AWS CLI
-        run: dotnet tool install -g Amazon.Lambda.Tools
+      # - name: AWS CLI
+      #   run: dotnet tool install -g Amazon.Lambda.Tools
 
-      - name: Restore dependencies
-        run: dotnet restore lambdaValidarUsuario.sln
+      # - name: Restore dependencies
+      #   run: dotnet restore lambdaValidarUsuario.sln
 
-      - name: Restore project
-        run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild 
+      # - name: Restore project
+      #   run: dotnet restore "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -t:rebuild 
 
-      - name: Build Projeto
-        run: dotnet publish "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -c Release -o "/home/runner/work/_temp"
+      # - name: Build Projeto
+      #   run: dotnet publish "./lambdaValidarUsuario/lambdaValidarUsuario.csproj" -c Release -o "/home/runner/work/_temp"
 
       # - name: Deploy to Lambda
       #   run: dotnet lambda deploy-serverless
