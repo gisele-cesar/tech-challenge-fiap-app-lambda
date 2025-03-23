@@ -2,7 +2,7 @@
 data "archive_file" "lambda" {
   type        = "zip"
   #source_dir  = "../lambdaValidarUsuario/publish/"
-  source_dir  = "../"
+  source_dir  = "${path.module}/lambdaValidarUsuario/"
   output_path = "lambda.zip"
   depends_on  = [null_resource.build_dotnet_lambda]
 }
