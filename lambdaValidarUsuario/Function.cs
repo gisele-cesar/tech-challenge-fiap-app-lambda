@@ -5,9 +5,7 @@ using Amazon.Lambda.Core;
 using lambdaValidarUsuario.Interfaces;
 using lambdaValidarUsuario.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using System;
-using System.Reflection;
+using System.Text.Json;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -22,7 +20,7 @@ namespace lambdaValidarUsuario
         {
             context.Logger.LogInformation("Iniciando processamento da requisição");
 
-            context.Logger.LogInformation($"Recebendo requisição {JsonConvert.SerializeObject(request)}");
+            context.Logger.LogInformation($"Recebendo requisição {JsonSerializer.Serialize(request)}");
 
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
@@ -37,7 +35,7 @@ namespace lambdaValidarUsuario
             {
                 Id = Guid.NewGuid().ToString(),
                 respostaTeste = "Resposta do lambda",
-                request = JsonConvert.SerializeObject(request)
+                request = JsonSerializer.Serialize(request)
             };
             /// await service.Create(item);
 
@@ -46,7 +44,7 @@ namespace lambdaValidarUsuario
                 return new APIGatewayProxyResponse
                 {
                     StatusCode = 200,
-                    Body = JsonConvert.SerializeObject(item)
+                    Body = JsonSerializer.Serialize(request)
                 };
             }
             else
