@@ -1,8 +1,6 @@
 ## Archiving the Artifacts
 data "archive_file" "lambda" {
   type        = "zip"
-  #source_dir  = "../lambdaValidarUsuario/publish/"
-  #source_dir  = "${path.module}/lambdaValidarUsuario/bin/Release/net8.0/"
   source_dir  = "/home/runner/work/_temp/publish/"
   output_path = "lambda.zip"
   depends_on  = [null_resource.build_dotnet_lambda]
@@ -15,8 +13,6 @@ resource "aws_lambda_function" "lambda" {
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
   source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
-  # source_code_hash = filebase64sha256("lambda.zip") 
-  # source_code_hash = filebase64sha256(data.archive_file.lambda.output_path)
   runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
@@ -61,7 +57,6 @@ resource "aws_apigatewayv2_api" "lambda" {
 
 resource "aws_apigatewayv2_stage" "lambda" {
   api_id = aws_apigatewayv2_api.lambda.id
-
   name        = "dotnet-lambda-annotations"
   auto_deploy = true
 }
