@@ -9,7 +9,7 @@ data "archive_file" "lambda" {
 resource "aws_lambda_function" "lambda" {
   depends_on       = [data.archive_file.lambda]
   filename         = "lambda.zip"
-  function_name    = "lambdaValidarUsuario"
+  function_name    = "lambda-validar-usuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
   source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
@@ -51,13 +51,13 @@ resource "aws_iam_role_policy_attachment" "lambdabasic" {
 }
 
 resource "aws_apigatewayv2_api" "lambda" {
-  name          = "dotnet-lambda-annotations"
+  name          = "gtw-usuario"
   protocol_type = "HTTP"
 }
 
 resource "aws_apigatewayv2_stage" "lambda" {
   api_id = aws_apigatewayv2_api.lambda.id
-  name        = "dotnet-lambda-annotations"
+  name        = "gtw-usuario"
   auto_deploy = true
 }
 
@@ -70,7 +70,7 @@ resource "aws_apigatewayv2_integration" "lambda" {
 
 resource "aws_apigatewayv2_route" "lambda" {
   api_id = aws_apigatewayv2_api.lambda.id
-  route_key = "POST /orders/{userId}/create"
+  route_key = "POST /usuario/validar-por-documento/{documento}"
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
 }
 
