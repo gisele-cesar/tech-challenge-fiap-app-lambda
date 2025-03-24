@@ -1,6 +1,6 @@
 {
   "Information": [],
-  "profile": "",
+  "profile": "default",
   "region": "us-east-1",
   "configuration": "Release",
   "function-architecture": "x86_64",

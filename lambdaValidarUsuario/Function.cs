@@ -20,7 +20,9 @@ namespace lambdaValidarUsuario
 
         public async Task<APIGatewayProxyResponse> handleRequest(APIGatewayProxyRequest request, ILambdaContext context)
         {
-            context.Logger.LogInformation("Recebendo requisição");
+            context.Logger.LogInformation("Iniciando processamento da requisição");
+
+            context.Logger.LogInformation($"Recebendo requisição {JsonConvert.SerializeObject(request)}");
 
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
