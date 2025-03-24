@@ -14,8 +14,8 @@ resource "aws_lambda_function" "lambda" {
   function_name    = "lambdaValidarUsuario"
   role             = aws_iam_role.lambda.arn
   handler          = "lambdaValidarUsuario::lambdaValidarUsuario.LambdaHandler::handleRequest" #Class is build from a source generator
-  source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
-  #source_code_hash = filebase64sha256("./lambda.zip")
+  #source_code_hash = data.archive_file.lambda.output_base64sha256 # ?
+  source_code_hash = filebase64sha256("./lambda.zip")
   runtime          = "dotnet8"
   architectures    = ["x86_64"]
   memory_size      = "512"
