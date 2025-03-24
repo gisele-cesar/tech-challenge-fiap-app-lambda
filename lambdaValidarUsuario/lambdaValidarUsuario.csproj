@@ -4,6 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <SelfContained>False</SelfContained>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="aws-lambda-tools-defaults.json" />
