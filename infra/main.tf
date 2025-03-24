@@ -54,35 +54,35 @@ resource "aws_iam_role_policy_attachment" "lambdabasic" {
   policy_arn = data.aws_iam_policy.lambdabasic.arn
 }
 
-# resource "aws_apigatewayv2_api" "lambda" {
-#   name          = "dotnet-lambda-annotations"
-#   protocol_type = "HTTP"
-# }
+resource "aws_apigatewayv2_api" "lambda" {
+  name          = "dotnet-lambda-annotations"
+  protocol_type = "HTTP"
+}
 
-# resource "aws_apigatewayv2_stage" "lambda" {
-#   api_id = aws_apigatewayv2_api.lambda.id
+resource "aws_apigatewayv2_stage" "lambda" {
+  api_id = aws_apigatewayv2_api.lambda.id
 
-#   name        = "dotnet-lambda-annotations"
-#   auto_deploy = true
-# }
+  name        = "dotnet-lambda-annotations"
+  auto_deploy = true
+}
 
-# resource "aws_apigatewayv2_integration" "dotnet" {
-#   api_id = aws_apigatewayv2_api.lambda.id
-#   integration_uri    = aws_lambda_function.lambda.invoke_arn
-#   integration_type   = "AWS_PROXY"
-#   integration_method = "POST"
-# }
+resource "aws_apigatewayv2_integration" "dotnet" {
+  api_id = aws_apigatewayv2_api.lambda.id
+  integration_uri    = aws_lambda_function.lambda.invoke_arn
+  integration_type   = "AWS_PROXY"
+  integration_method = "POST"
+}
 
-# resource "aws_apigatewayv2_route" "dotnet" {
-#   api_id = aws_apigatewayv2_api.lambda.id
-#   route_key = "POST /orders/{userId}/create"
-#   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
-# }
+resource "aws_apigatewayv2_route" "dotnet" {
+  api_id = aws_apigatewayv2_api.lambda.id
+  route_key = "POST /orders/{userId}/create"
+  target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
+}
 
-# resource "aws_lambda_permission" "api_gw" {
-#   statement_id  = "AllowExecutionFromAPIGateway"
-#   action        = "lambda:InvokeFunction"
-#   function_name = aws_lambda_function.lambda.function_name
-#   principal     = "apigateway.amazonaws.com"
-#   source_arn = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
-# }
+resource "aws_lambda_permission" "api_gw" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
+}
