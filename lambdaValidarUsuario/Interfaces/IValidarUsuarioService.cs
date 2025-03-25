@@ -1,7 +1,10 @@
-﻿namespace lambdaValidarUsuario.Interfaces
+﻿using Amazon.CognitoIdentityProvider.Model;
+using lambdaValidarUsuario.Model;
+
+namespace lambdaValidarUsuario.Interfaces
 {
     public interface IValidarUsuarioService
     {
-        Task<bool> Validar(string documento);
+        Task<SignUpResponse> Validar(UserCognito user);
     }
 }

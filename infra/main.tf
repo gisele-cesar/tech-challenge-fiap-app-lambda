@@ -70,7 +70,7 @@ resource "aws_apigatewayv2_integration" "lambda" {
 
 resource "aws_apigatewayv2_route" "lambda" {
   api_id = aws_apigatewayv2_api.lambda.id
-  route_key = "POST /usuario/validar-por-documento/{documento}"
+  route_key = "POST /usuario/validar"
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
 }
 

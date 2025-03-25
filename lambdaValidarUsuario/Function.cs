@@ -1,6 +1,7 @@
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using lambdaValidarUsuario.Interfaces;
+using lambdaValidarUsuario.Model;
 using lambdaValidarUsuario.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,14 +33,12 @@ namespace lambdaValidarUsuario
 
                 using var scope = _serviceProvider.CreateScope();
                 var validarUsuario = scope.ServiceProvider.GetRequiredService<IValidarUsuarioService>();
-                var item = new EntidadeTeste
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    respostaTeste = "Resposta do lambda",
-                    request = JsonSerializer.Serialize(request)
-                };
 
-                if (await validarUsuario.Validar("00000"))
+                UserCognito body = new UserCognito { };
+
+                var retorno = await validarUsuario.Validar(body);
+
+                if (!string.IsNullOrEmpty(retorno.UserSub))
                 {
                     context.Logger.LogInformation("ok");
 
@@ -75,34 +74,7 @@ namespace lambdaValidarUsuario
             serviceCollection.AddLogging();
             serviceCollection.AddScoped<IValidarUsuarioService, ValidarUsuarioService>();
         }
-
-    //    public static void SetupLogger(bool isDevelopment, ILoggingBuilder logging, IConfiguration configuration)
-    //    {
-    //        if (logging == null)
-    //        {
-    //            throw new ArgumentNullException(nameof(logging));
-    //        }
-
-    //        // Create and populate LambdaLoggerOptions object
-    //        var loggerOptions = = new LambdaLoggerOptions
-    //        {
-    //            IncludeCategory = true,
-    //            IncludeLogLevel = true,
-    //            IncludeNewline = true,
-    //            IncludeEventId = true,
-    //            IncludeException = true
-    //        };
-
-    //        // Configure Lambda logging
-    //        logging.AddLambdaLogger(loggerOptions);
-    //        logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Debug);
-    //    }
    }
 
-    public class EntidadeTeste
-    {
-        public string Id { get; set; }
-        public string respostaTeste { get; set; }
-        public string request { get; set; }
-    }
+    
 }
